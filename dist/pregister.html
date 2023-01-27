@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body.bili-day {
+				background: #f4f4f4;
+			}
+
+			body {
+				min-height: 100%;
+				position: relative;
+			}
+
+			ul li {
+				list-style: none;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			* {
+				padding: 0;
+				margin: 0;
+				font-family: "PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif";
+				-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+				tap-highlight-color: hsla(0, 0%, 100%, 0);
+			}
+
+			.container {
+				width: 100%;
+				margin: 0 auto;
+			}
+
+			.header-box {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 100%;
+				min-height: 60px;
+				padding: 0 0;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: flex;
+				margin: 0 auto;
+				justify-content: flex-start;
+				align-items: center;
+				position: relative;
+			}
+
+			.bili-day .text-box-color {
+				background: #fff;
+			}
+
+			.bili-day .text-title-color {
+				color: #212121;
+			}
+
+			.header-box>div {
+				width: 3.2rem;
+			}
+
+			.header-box h1,
+			.text-ellipsis {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+
+			.header-box h1 {
+				-webkit-box-flex: 1;
+				-webkit-flex: 1 1 100%;
+				-moz-box-flex: 1;
+				-ms-flex: 1 1 100%;
+				flex: 1 1 100%;
+				font-size: 19px;
+				text-align: center;
+				line-height: 21px;
+				padding: 10px 0;
+				word-break: break-all;
+				font-weight: 400;
+				position: absolute;
+				left: 40%;
+			}
+
+			.title-right {
+				width: 50px;
+				font-size: 6px;
+				text-align: right;
+				padding-right: 5px;
+			}
+
+			.form-group {
+				width: 10rem;
+				margin: 0 auto;
+				padding-top: 15px;
+			}
+
+			.bili-day .select-box {
+				border-top: 1px solid #e7e7e7;
+				border-bottom: 1px solid #e7e7e7;
+			}
+
+			.select-box {
+				border-top: 1px solid #e7e7e7;
+				border-bottom: 1px solid #e7e7e7;
+			}
+
+			.select-box {
+				width: 27rem;
+				min-height: 1.173333rem;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				position: relative;
+				display: block;
+			}
+
+			.bili-day .select-box {
+				background: #fff;
+			}
+
+			.select-box select {
+				display: block;
+			}
+
+			.select-box select {
+				min-height: 1.173333rem;
+				line-height: 1.173333rem;
+				height: 4.173333rem;
+				width: 100%;
+				outline: none;
+				padding: 0 .32rem;
+				border: none;
+				font-family: PingFangHK-Regular;
+				font-size: 15px;
+			}
+
+			.bili-day .select-color {
+				background: #fff;
+				color: #212121;
+			}
+
+			.select-box select option {
+				font-size: 5px;
+			}
+
+			.select-box select option {
+				border: none;
+				outline: none;
+			}
+
+			@media not all,
+			(-webkit-min-device-pixel-ratio: 3),
+			not all,
+			(min-resolution: 3dppx),
+			screen and (-webkit-min-device-pixel-ratio: 3) .select-box .select-arrow {
+				background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAAEgBckRAAAAAXNSR0IArs4c6QAABEpJREFUaAXtmNlrE1EUxtu0TdsEiz4UFTcQEUHFR1+ENtVarandaMEFcUEUERH/AsUnBRERURAFUV+6pBQrUkWriOKGiCuudV+Le+NCTf3dkgPDMJM7k0yCQgZuzz3nnvOd75yZO72TnBzd1dLSMmjr437RMsLSaJv0/15IularQJ8nvbBC9gQ4AyBwr2Rcc5WqtbV1GUEXXQW1tbWtJuicqyAC1jNOuQ0aMAfY3mnQf+M82hxgqVP4TwJGWS6ajThG29vbx5rtljrIW3GeYLn4fxopaTY9iKTCPlcXTJIlg4ODR/C70tzcPFPnb17XJpAAEq0g0UH0CySaJXaddJxAgNgna2Ox2F70HhJViN1Ouk4gQFS0kYp2oneTaJ7YzdJ265gdzTrg25UtPz9/iXnNqLuugKfqFwB+gEc2NDS8N4JZzR0nAPgHAEWFhYVjamtrX1uBWdm0Ceh1P+0I+P3+8XV1dS+sQLK2bAfsO8Cj2dvV1TXC3kO/otvJ46LR6MeOjo7heihrD+0+oIo/hCoiw3nnfLGGsbfqKsgBNI/wGONzZ2fnMHso6xVtBRLGjo6xo5X/MJJ+F7tOaisQgKamJl9ubq76ePjW3d0dFLtOOq5AgKSS4uLiYE1NTVTsdtJ1AgXEjZfPoADtUm9Z28txi4wIgAqxaE9PT5FxzTxPKkEcpEnJvr6+fWZQoy5MjDbtnBbV4xThpt/k5s9IFOA6AeALAexk3KZV0xOBqzVXCQBfQEwX4y7gUxWA7nKcAHB1NDnBuA/4FB2wrDtKAHglASfp+UN6PlmCnUhtAsArADrNeAzzSU5AjT4JEwBehvNZRi/gE42BTuf5GseztOUZbUkKXIOdXc52INsBTzqQ8D2RKAPvkKOsL477XA8EAnPC4fCnRDHpWEu6AEWG7+VFfC8fZqpOfuq6yqjkpej6eDkUncSflAqQfBSylEIOoQ8dUHj5Xg4Gg3Orq6u/ik+6pCcFCDkeq+XMDzCkkIt8+M7ji/qb+HgtPS1AyFHIKu7C/vg5P4f5+ZKSkvlVVVX94uOVTEsBQo4j/hrme6UQ5uc47lc7Oe4Lhk6mtQBJTiHrKGKP6MgzjDCbPeEnhcHfdpqRAiQ7m30Dm32X6MhTpaWlC0Oh0E+DzdU0owUIM/bIJuY7RGePbObIuEV0N3LobeEmIFVfHqcGCG8z4Nzg8dpt0F1NM3YHIF4L0VbYFcQZ3mJDV7Ch+1wxNjmnvQCIhyHeTl6/yk3376CH2MAfTFySUtNWAMTnw6gDsoVxZvf4mTjEP7V3STG1CfK8AIjPhbT68pcfRR7k5eWVNzY2vrHhkJLZswIgPhvix2BTHGf0CFnOo/IqJYaa4JQLgHg5OY5DPqBy8Yw/8fl8ZXT8pdLTfSVdQCQSmTYwMHAJgsE4yafIMjr+PK5nROh+l7AlAXlVvCL7tqCgYGV9ff1TW+fsQrYD/24H/gJW2HCxXu1NIAAAAABJRU5ErkJggg==);
+			}
+
+			.select-box .select-arrow {
+				position: absolute;
+				width: 18px;
+				height: 18px;
+				top: 1.373333rem;
+				right: 32px;
+				background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAAEEfUpiAAAAAXNSR0IArs4c6QAAAe9JREFUWAntls1Kw0AUhZvYBxKfQHTjWpKKRauUilVRpEoFBV0IiqiIoAguBBER+7Ny69JX8SXUJH5TnBDThJn8FBe2MGTunXvPOXPvJJ1CYVC/Vqu10ofdbrdd34nx6RuJJ2RvBpPMoCHmnuedhX052eztXQn1a69x0SA5cWu+n6Ap3whPoNkK+3ybzD3f+NtJp9NZ0iqJSiYg61pl0wDaBugrKq4Y5Qz7OGEn+Bphv9IWrGxjRxkYDiDxg8SDsP+/2Ox9koNUz7RfQNxcQACqZVJCOz3GYh4g83mAlKNA+r6sUUGGYVTxP0atKX0UsiJqoQyMCiCxnCV5JkuylSV5NHVyVB2GvoFXwNBhoKkTvA2v/DuI+NVSqXSjk6cToyVAAvFWLTPvkSOmjpBbuZb2mUiAJOFju+a67hVV8Rg1y7Lu5FrSZyoBkgQhGwi5xHZN06wi5F6u6T4zCZAknBFxazhnuFSkYtu29pczFwFSCGek+XONEffQcc7Im1yLe2rdjeKSg37asUA7joWPdjRoh5JcxGauAMRzEIvew9sjvhDAur/UAiCehfgBohFGk3Kf6pIG4xILoM82fX4SxBy4XQ5cr+xB0CRzbQEQTwP8DHkR4n2ID5MQxcVqCeh2u2OO47xAfA3xURzY0J+mAt+HhtnQ0d/S9gAAAABJRU5ErkJggg==);
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+
+			}
+
+			.form-group {
+				width: 26rem;
+				margin: 0 auto;
+				padding-top: .426667rem;
+			}
+
+			.bili-day .list-group-border {
+				border-bottom: 1px solid #e7e7e7;
+			}
+
+			.list-group {
+				padding-top: 15px;
+				width: 100%;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				padding-bottom: 3px;
+			}
+
+			.bili-day .list-group-li {
+				background: #fff;
+			}
+
+			.list-group>li .input-item {
+				border-bottom: none;
+			}
+
+			.bili-day .text-box-color {
+				border-bottom: 1px solid #e7e7e7;
+				border-top: 1px solid #e7e7e7;
+			}
+
+			.input-item {
+				position: relative;
+				width: 100%;
+				min-height: 50px;
+				padding: 0 10px;
+				height: 50px;
+				line-height: 50px;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+
+			.input-item .input-title {
+				min-height: 20px;
+				line-height: 20px;
+				width: 50px;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+				font-family: PingFangSC-Regular;
+				font-size: 16px;
+				display: block;
+			}
+
+			.input-item .input-text {
+				position: absolute;
+				top: -16px;
+				left: 85px;
+				line-height: .533333rem;
+				padding: .32rem 0;
+				height: 50px;
+				border: none;
+				width: 250px;
+				background: none;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				font-family: PingFangSC-Regular;
+				font-size: 13px;
+				outline: none;
+				color: #212121;
+			}
+
+			.bili-day .text-title-color {
+				color: #212121;
+			}
+
+			.has-button .input-status {
+				margin-right: 10px;
+			}
+
+			.input-item .input-status {
+				width: 10px;
+				min-height: 25px;
+			}
+
+			.clearfix:after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+
+			.input-item .input-btn {
+				position: absolute;
+				top: -9px;
+				right: 22px;
+				outline: none;
+				width: 100px;
+				padding-left: 5px;
+				height: 30px;
+				border: 0px;
+				color: #fb7299;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				margin-top: .24rem;
+				line-height: 30px;
+				text-align: center;
+				font-family: PingFangSC-Regular;
+				font-size: 15px;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+
+			.input-item .long-width {
+				width: 65%;
+			}
+
+			.btn-box {
+				width: 380px;
+				height: 48px;
+				line-height: 48px;
+				
+				text-align: center;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				margin: .426667rem auto 0;
+				padding: 0 5px;
+
+			}
+
+			.btn-box>.btn-width:last-child {
+				margin-right: 0;
+			}
+
+			.btn-box .btn-full {
+				width: 100%;
+			}
+
+			.btn-box .btn-width {
+				float: left;
+				width: 174px;
+				text-align: center;
+				margin: 0 auto;
+				margin-right: .266667rem;
+				color: white;
+				background-color: #ff9db5;
+				border: 1px solid #ff9db5;
+				border-radius: 5px;
+			}
+			.btn-box .btn-primary{
+				background-color: white;
+				color: #ff9db5;
+			}
+			.btn-box .btn-default-disable {
+				margin-left: 10px;
+				background: #fb7299;
+				color: #fff;
+				
+			}
+
+			.explain {
+				font-family: PingFangSC-Regular;
+				font-size: .32rem;
+				text-align: center;
+				line-height: 20px;
+				margin: 15px auto 0;
+				height: 20px;
+			}
+
+			.explain a {
+				color: #fb7299;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="login-app">
+			<div class="login-app">
+				
+				<div>
+					<div class="container">
+						<div class="header-box text-box-color text-title-color">
+							<div></div>
+							<h1>
+								注册bilibili
+							</h1>
+						</div>
+						<div>
+							<div class="form-group"><label class="select-box"><select id="select0.12221979651752979"
+										name="country_code" class="select-color">
+										<option value="86">中国大陆</option>
+										<option value="852">中国香港特别行政区</option>
+										<option value="853">中国澳门特别行政区</option>
+										<option value="886">中国台湾</option>
+										<option value="1">美国</option>
+										<option value="32">比利时</option>
+										<option value="61">澳大利亚</option>
+										<option value="33">法国</option>
+										<option value="1">加拿大</option>
+										<option value="81">日本</option>
+										<option value="65">新加坡</option>
+										<option value="82">韩国</option>
+										<option value="60">马来西亚</option>
+										<option value="44">英国</option>
+										<option value="39">意大利</option>
+										<option value="49">德国</option>
+										<option value="7">俄罗斯</option>
+										<option value="64">新西兰</option>
+										<option disabled="disabled" value="">--其它--</option>
+										<option value="93">阿富汗</option>
+
+									</select>
+									<div class="select-arrow"></div>
+								</label></div>
+							<div class="form-group">
+								<ul class="list-group list-group-border">
+									<li class="list-group-li">
+										<div class="input-item clearfix text-box-color has-button"><span
+												class="float-left input-title text-title-color">+86</span> <input
+												data-v-15db3d56="" placeholder="请输入常用手机号" maxlength="16" type="tel"
+												name="tel" autocomplete="off"
+												class="float-left input-text text-title-color">
+											<div class="float-left input-status clearfix">
+												
+											</div> <button class="input-btn text-btn-color float-left">获取验证码</button>
+										</div>
+									</li>
+									<li class="list-group-li">
+										<div class="input-item clearfix text-box-color"><span
+												class="float-left input-title text-title-color">验证码</span> <input
+												data-v-15db3d56="" placeholder="请输入验证码" maxlength="6" type="tel"
+												name="captcha" autocomplete="off"
+												class="float-left input-text text-title-color long-width">
+											<div class="float-left input-status clearfix">
+												
+											</div>
+											
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="form-group">
+								<div class="input-item clearfix text-box-color">
+									<span class="float-left input-title text-title-color">密码</span>
+									<input placeholder="6～16个字符，区分大小写" maxlength="20" type="password"
+										name="userpwd" autocomplete="on"
+										class="float-left input-text text-title-color long-width">
+									<div class="float-left input-status clearfix">
+										<span></span></div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="btn-box clearfix"><a
+								href="phonelogin.html"
+								class="btn-primary btn-width">登录</a>
+							<div class="btn-default btn-width btn-default-disable">同意并注册</div>
+						</div>
+					</div>
+					<p class="explain tips">完成注册即代表你同意<a target="_blank"
+							href="https://www.bilibili.com/blackboard/account-useragreement.html">用户协议</a>和<a
+							data-v-4e6c4f46="" target="_blank"
+							href="https://www.bilibili.com/blackboard/privacy-h5.html">隐私政策</a></p>
+					<div class="sns-box" style="display: none;">
+						<div class="sns-title clearfix">
+							<div class="line-box"><span></span></div>
+							<div class="sns-content">
+								<p class="tips">
+									其它登录方式
+								</p>
+							</div>
+							<div class="line-box"><span></span></div>
+						</div>
+						<div class="sns-btn">
+							<div>
+								<div class="icon-qq"></div> <span class="tips">QQ</span>
+							</div>
+							<div>
+								<div class="icon-weibo"></div> <span class="tips">微博</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		</div>
+	</body>
+</html>

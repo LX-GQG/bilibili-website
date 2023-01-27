@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a{
+				text-decoration: none;
+				color: #000000;
+			}
+			ul li{
+				list-style: none;
+			}
+			.m-navbar {
+				height: 11.73333vw;
+				line-height: 11.73333vw;
+				padding: 0 5px 0 5px;
+				font-size: 0;
+				background: #fff;
+				position: relative;
+			}
+			.m-navbar .logo {
+				float: left;
+				height: 11.73333vw;
+			}
+			.m-navbar .logo i {
+				top: 6px;
+				left: 7px;
+				position: absolute;
+				background-image: url(../src/assets/images/bili.png);
+				background-position: -10px -2px;
+				background-size: 100px;
+				width: 75px;
+				height: 39px;
+				color: #fb7299;
+				font-size: 7.46667vw;
+			}
+			.m-navbar .right {
+				float: right;
+				height: 11.73333vw;
+				position: relative;
+			}
+			.m-navbar .right .search {
+				margin-right: 5.86667vw;
+				width: 5.86667vw;
+				height: 5.86667vw;
+				display: inline-block;
+				margin-top: 0.53333vw;
+			}
+			.m-navbar .right .search i {
+				position: absolute;
+				left: 0;
+				top: 13px;
+				width: 24px;
+				height: 24px;
+				background-position: -989px -909px;
+				background-image: url(../src/assets/images/icons.png);
+				background-size: 2000px;
+			}
+			.m-navbar .right .face {
+				vertical-align: top;
+				width: 35px;
+				height: 35px;
+				display: inline-block;
+				margin-top: 1.66667vw;
+				margin-right: 3.2vw;
+			}
+			.m-navbar .right .face img {
+				width: 100%;
+				height: 100%;
+				border-radius: 3.2vw;
+			}
+			.bfs-img {
+				background: url(//s1.hdslb.com/bfs/static/jinkela/mstation-h5/assets/loading.png) no-repeat 50%;
+				background-size: contain;
+				background-color: #e7e7e7;
+				-o-object-fit: cover;
+				object-fit: cover;
+			}
+			.m-navbar .right .m-nav-openapp {
+				vertical-align: top;
+			}
+			.open-app-btn {
+				display: inline-block;
+				position: relative;
+			}
+			.m-navbar .right .nav-open-app-img {
+				width: 19.2vw;
+			}
+			.m-navbar .right .nav-open-app-img, .m-navbar .right .openapp {
+				margin-left: 2.13333vw;
+				height: 6.4vw;
+				margin-top: 2.66667vw;
+				vertical-align: top;
+			}
+			.m-space-info {
+				background: #fff;
+				font-size: 0;
+			}
+			.m-space-info .banner {
+				width: 100vw;
+				height: 24vw;
+				overflow: hidden;
+				background: url(../src/assets/images/bannerTop_new.png);
+				background-size: cover;
+				background-position: 50%;
+			}
+			.m-space-info .part1 {
+				padding: 0 3.2vw;
+			}
+			.m-space-info .part1 .face {
+				float: left;
+				position: relative;
+				width: 22.4vw;
+				height: 22.4vw;
+			}
+			.m-space-info .part1 .face .avatar {
+				position: absolute;
+				z-index: 2;
+				width: 22.4vw;
+				height: 22.4vw;
+				border-radius: 11.2vw;
+				margin-top: -1.6vw;
+			}
+			.bfs-img {
+				background: url(//s1.hdslb.com/bfs/static/jinkela/mstation-h5/assets/loading.png) no-repeat 50%;
+				background-size: contain;
+				background-color: #e7e7e7;
+				-o-object-fit: cover;
+				object-fit: cover;
+			}
+			.m-space-info .part1 .face .official, .m-space-info .part1 .face .vip-label {
+				width: 5.86667vw;
+				height: 5.86667vw;
+				position: absolute;
+				right: 0;
+				bottom: 1.6vw;
+				z-index: 3;
+			}
+			.m-space-info .part1 .relation {
+				float: right;
+				width: 58.66667vw;
+				padding-top: 2.13333vw;
+				color: #e7e7e7;
+			}
+			.m-space-info .part1 .relation .count {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-ms-flex-pack: distribute;
+				justify-content: space-around;
+			}
+			.m-space-info .part1 .relation .count>span {
+				width: 19.2vw;
+				display: inline-block;
+				text-align: center;
+				vertical-align: middle;
+			}
+			.m-space-info .part1 .relation .count .num {
+				font-size: 3.73333vw;
+				color: #212121;
+				line-height: 4.26667vw;
+			}
+			.m-space-info .part1 .relation .count .type {
+				font-size: 2.93333vw;
+				color: #999;
+			}
+			.m-space-info .part1 .relation .count .split {
+				vertical-align: middle;
+				width: 1px;
+				height: 4.26667vw;
+				background: #e7e7e7;
+			}
+			.m-space-info .part1 .relation .follow-btn {
+				display: block;
+			}
+			.m-space-info .part1 .relation .follow-btn button.red {
+				background: #fb7299;
+				color: #fff;
+			}
+			
+			.m-space-info .part1 .relation .follow-btn button {
+				width: 100%;
+				display: block;
+				height: 8vw;
+				border: none;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				border-radius: 1.06667vw;
+				font-size: 3.73333vw;
+				margin-top: 3.2vw;
+				outline: none;
+			}
+			.m-space-info .part1 .relation .follow-btn button i {
+				margin-right: 0.53333vw;
+			}
+			.m-space-info .part2 {
+				clear: both;
+				padding: 3.2vw;
+				position: relative;
+			}
+			.m-space-info .part2 .base .name {
+				font-size: 4.8vw;
+				color: #212121;
+				max-width: 62.66667vw;
+				vertical-align: middle;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				display: inline-block;
+			}
+			.m-space-info .part2 .base .gender {
+				margin-left: 1.06667vw;
+				display: inline-block;
+				vertical-align: middle;
+				padding-top: 0.53333vw;
+			}
+			.m-space-info .part2 .base .level {
+				margin-left: 1.6vw;
+				vertical-align: middle;
+			}
+			.m-space-info .part2 .base .level i {
+				display: inline-block;
+				position: absolute;
+				width: 28px;
+				height: 18px;
+				margin-right: 5px;
+				vertical-align: middle;
+				background-image: url(../src/assets/images/Level-icons.png);
+				background-repeat: no-repeat;
+				background-position: -75px -82px;
+				left: 195px;
+				top: 20px;
+			}
+			.m-space-info .part2 .verify {
+				margin-top: 2.13333vw;
+			}
+			.m-space-info .part2 .verify img {
+				width: 4.8vw;
+				height: 4.8vw;
+				margin-right: 1.06667vw;
+				vertical-align: middle;
+				float: left;
+			}
+			.m-space-info .part2 .verify span {
+				font-size: 3.46667vw;
+				color: #505050;
+				line-height: 4.53333vw;
+				vertical-align: middle;
+				float: left;
+				width: 78.13333vw;
+				height: 4.53333vw;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.m-space-info .part2 .verify .spread-btn {
+				float: right;
+				font-size: 3.46667vw;
+				color: #1389bf;
+			}
+			.m-space-info .part2 .desc {
+				clear: both;
+			}
+			.m-space-info .part2 .desc .content.spread {
+				height: auto;
+				white-space: normal;
+				word-break: break-all;
+			}
+			.m-space-info .part2 .desc .content.hasRole {
+				width: 100%;
+			}
+			
+			.m-space-info .part2 .desc .content {
+				margin-top: 2.13333vw;
+				font-size: 3.46667vw;
+				color: #999;
+				line-height: 4.53333vw;
+				width: 83.46667vw;
+				height: 4.53333vw;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				float: left;
+			}
+			.tabs {
+				height: 10.66667vw;
+				line-height: 10.66667vw;
+				padding-left: 3.2vw;
+				background: #fff;
+				border-top: 1px solid #e7e7e7;
+				border-bottom: 1px solid #e7e7e7;
+				font-size: 0;
+			}
+			.tabs span.on {
+				color: #fb7299;
+			}
+			
+			.tabs span {
+				display: inline-block;
+				margin-right: 8.53333vw;
+				color: #757575;
+				font-size: 3.46667vw;
+			}
+			.feed-h5 {
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				color: #212121;
+				font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+				font-size: 14px;
+				line-height: 1.44;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-font-smoothing: antialiased;
+				-ms-touch-action: manipulation;
+				touch-action: manipulation;
+				-webkit-text-size-adjust: none;
+				-moz-text-size-adjust: none;
+				-ms-text-size-adjust: none;
+				text-size-adjust: none;
+			}
+			.feed-h5 ol, .feed-h5 ul, .feed-h5 li {
+				list-style: none;
+			}
+			.cover {
+				padding-bottom: 4px;
+				background: #f4f4f4;
+			}
+			.card {
+				background-color: #fff;
+			}
+			.card-content {
+				position: relative;
+			}
+			.cardHeader {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				padding-top: 14px;
+				padding-bottom: 14px;
+			}
+			.wings {
+				padding-left: 12px;
+				padding-right: 12px;
+			}
+			.avatar {
+				position: relative;
+				overflow: visible;
+				width: 40px;
+				height: 40px;
+				margin-right: 7px;
+				line-height: 40px;
+			}
+			.avatar .img {
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.avatar .img img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.cover-img img {
+				width: 100%;
+				height: 100%;
+				-o-object-fit: cover;
+				object-fit: cover;
+				-o-object-position: 50% 50%;
+				object-position: 50% 50%;
+				display: block;
+			}
+			.avatar .badge {
+				position: absolute;
+				width: 18px;
+				height: 18px;
+				bottom: -2px;
+				right: -2px;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.nameBox {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-ms-flex-pack: distribute;
+				justify-content: space-around;
+			}
+			.userName {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				font-size: 15px;
+				font-weight: 500;
+			}
+			.userExtra {
+				font-size: 12px;
+				color: #999;
+			}
+			.main {
+				padding-bottom: 14px;
+			}
+			.cover {
+				position: relative;
+				width: 98%;
+				margin: 0 auto;
+				margin-top: 12px;
+				border-radius: 4px;
+				overflow: hidden;
+			}
+			.cover-img img {
+				width: 100%;
+				height: 98%;
+				-o-object-fit: cover;
+				object-fit: cover;
+				-o-object-position: 50% 50%;
+				object-position: 50% 50%;
+				display: block;
+			}
+			.cushion {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 56px;
+			}
+			.cushion {
+				background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0,0,0,0.4)), to(transparent));
+				background-image: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+			}
+			.cushion .detail {
+				position: absolute;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				bottom: 8px;
+				left: 8px;
+				color: #fff;
+				font-size: 12px;
+				line-height: 18px;
+			}
+			.cushion .time {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				padding: 0 2px;
+				height: 18px;
+				border-radius: 2px;
+				text-align: center;
+				background: rgba(0,0,0,0.5);
+			}
+			.cushion p {
+				margin-right: 8px;
+			}
+			.title {
+				margin-top: 6px;
+				font-weight: 500;
+				font-size: 14px;
+			}
+			
+			.text-overflow-1 {
+				display: block;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.text-box, .text-box * {
+				vertical-align: top;
+				word-break: break-all;
+				word-wrap: break-word;
+				text-align: justify;
+			}
+			.footer {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				padding: 0 30px 12px;
+				-ms-flex-pack: distribute;
+				justify-content: space-around;
+			}
+			.footer li.transmit {
+				background: url(../src/assets/images/zhuanfa.png);
+				background-size: 20px;
+				background-repeat: no-repeat;
+			}
+			
+			.footer li.comment {
+				background: url(../src/assets/images/pinlun.png);
+				background-size: 20px;
+				background-repeat: no-repeat;
+			}
+			.footer li.support {
+				background: url(../src/assets/images/dz.png);
+				background-size: 20px;
+				background-repeat: no-repeat;
+			}
+			.footer li {
+				-webkit-box-flex: 1;
+				-ms-flex: 1 1 33%;
+				flex: 1 1 33%;
+				padding-left: 54px;
+				font-size: 13px;
+				line-height: 20px;
+				color: #757575;
+			}
+			.feed-h5 img {
+				max-width: 100%;
+			}
+			.top-right {
+				position: absolute;
+				top: 2px;
+				right: 2px;
+				padding: 10px;
+			}
+			.top-right .is-top {
+				display: inline-block;
+				font-size: 12px;
+				height: 16px;
+				line-height: 16px;
+				color: #fb7299;
+				background: #fff0f1;
+				border-radius: 2px;
+				padding: 0 6px;
+			}
+			.top-right .is-top i {
+				display: inline-block;
+				width: 9px;
+				height: 9px;
+				margin-right: 4px;
+				background: url(../src/assets/images/zhiding.png);
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="m-space">
+			<div class="m-navbar"><a class="logo"><i class="iconfont Navbar_logo"></i></a>
+				<div class="right"><a class="search"><i class="iconfont ic_search_tab"></i></a> 
+					<a class="face" href="phonelogin.html">
+						<img src="//s1.hdslb.com/bfs/static/jinkela/long/images/login.png@48w_48h_1c.png" class="bfs-img">
+					</a>
+					<div class="open-app-btn m-nav-openapp"><img src="//s1.hdslb.com/bfs/static/jinkela/mstation-h5/assets/navOpenApp.png"
+						 class="nav-open-app-img">
+					</div>
+				</div>
+			</div>
+			<div class="m-space-info">
+				<div class="banner"></div>
+				<div class="part1">
+					<div class="face"><img src="../src/assets/images/4c4850ff0fbf8cc10db6f30f335446fcd5f24c54.jpg@128w_128h_1o.webp" class="bfs-img avatar">
+					</div>
+					<div class="relation">
+						<div class="count"><span class="fans"><span class="num">408</span><br> <span class="type">粉丝</span></span> <span
+							 class="split"></span> <span class="follow"><span class="num">8</span><br> <span class="type">关注</span></span>
+						</div>
+						<div class="follow-btn"><button class="red"><i class="iconfont ic_add1"></i>关注
+							</button></div>
+					</div>
+				</div>
+				<div class="part2">
+					<div class="base"><span class="name">茂职院计算机工程系</span> <span class="gender">
+							</span> <span class="level"><i class="iconfont ic_userlevel_2" style="color:#95DDB2;"></i></span>
+					</div>
+					<div class="verify"><img src="../src/assets/images/icon_Certification_enterprise.png"
+						 class="official"> <span class="">bilibili机构认证：茂职计算机系官方账号</span> <a class="spread-btn">展开</a></div>
+					<div class="desc"><span class="content hasRole">茂名职业技术学院计算机工程系官方账号
+							修徳 强技 求实 创新
+							关注超1000人，我就开直播！！！</span>
+					</div>
+					<div class="clearfloat"></div>
+				</div>
+			</div>
+			<div class="tabs"><span class="on">动态</span> <span class="">视频</span>
+				
+			</div>
+			<div class="list">
+				<div class="dynamic-list" style="display:;">
+					<div class="feed-h5">
+						<ul class="list">
+							<li class="cover">
+								<div class="card">
+									<div class="card-content">
+										<div class="cardHeader wings">
+											<div class="avatar cover-img avatar" data-report-id="topic_userpic_click"
+											 data-report-value="8,541305233"><i class="img"><img src="../src/assets/images/4c4850ff0fbf8cc10db6f30f335446fcd5f24c54.jpg@128w_128h_1o.webp"></i>
+											</div>
+											<div data-report-id="topic_nickname_click" data-report-value="8,541305233" class="nameBox">
+												<div class="userName">
+													茂职院计算机工程系
+												</div>
+												<p class="userExtra">2020-07-07 · 投稿了视频</p>
+											</div>
+										</div>
+										<div class="main">
+												<div class="cover cover-img"><img src="../src/assets/images/mzy.webp">
+													<div class="cushion">
+														<div class="detail">
+															<p class="time">05:57</p>
+															<p>783观看</p>
+															<p>12弹幕</p>
+														</div>
+													</div>
+												</div>
+												<div class="title text-overflow-1 text-box">你总说毕业遥遥无期，转眼就各奔东西——计算机工程系毕业祝福</div>
+											</div>
+										</div>
+										<ul class="footer">
+											<li data-report-id="topic_tab_retweet_click" data-report-value="8,541305233" class="transmit"><i
+												></i>1</li>
+											<li data-report-id="topic_tab_comment_click" data-report-value="8,541305233" class="comment"><i
+												></i>31</li>
+											<li data-report-id="topic_tab_like_click" data-report-value="8,541305233" class="support"><i
+												></i>25</li>
+										</ul>
+										<div class="top-right"><span class="is-top"><i></i>置顶
+											</span></div>
+									</div>
+								</div>
+							</li>
+						</div>
+					</div>
+				</div>
+		</div>
+	</body>
+</html>
