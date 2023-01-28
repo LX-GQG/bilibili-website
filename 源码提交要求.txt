@@ -1,2 +1,0 @@
-使用命令npm run build对项目进行打包。
-提交src文件夹及打包好的dist文件夹。
